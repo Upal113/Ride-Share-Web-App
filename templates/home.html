@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Rides</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+       p{
+         white-space: pre-line;
+       }
+    </style>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Ride Share Dhaka</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/ourteam">Follow Our Team</a>
+        <a class="nav-item nav-link" href="/request-ride">Request a Ride</a>
+      </div>
+    </div>
+  </nav>
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Welcome to Ride Share Dhaka</h1>
+      <p class="lead">You can search for ride partner or look for partners right away! Enjoy Sharing
+      </p>
+      <p class="lead">
+        <a href="#" class="btn btn-lg btn-secondary">Watch Simple Tutorial</a>
+      </p>
+    </main>
+
+    
+  </div>
+    <form method="POST">
+      
+        <div class="form-group">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select date and time you would like to look out for</label>
+            <br>
+            <input required placeholder="Select End Date" type="date" name="start_date_input"/><br>
+            <input required type="time" placeholder="Select Start Time" name="start_time_input"/><br>
+            <label for="exampleFormControlSelect1">Select date and time till you would like to look out for</label>
+            <br>
+            <input required placeholder="Select End Date" type="date" name="end_date_input"/><br>
+            <input required placeholder="Select End Time" type="time" name="end_time_input"/><br>
+         
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Starting Point</label>
+              <select required name="starting_point" class="form-control" id="exampleFormControlSelect1">
+                {% for stop in stops :%}
+                <option>{{stop}}</option>
+                {% endfor %}
+              </select>
+           
+          </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select End Point</label>
+            
+              <select required name="end_point" class="form-control" id="exampleFormControlSelect1">
+                {% for stop in stops :%}
+                <option>{{stop}}</option>
+                {% endfor %}
+              </select>
+           
+          </div>    
+        <button type="submit" class="btn btn-success">Search for best rides</button>
+      </form>
+    {% for ride in rides:%} 
+    <div class="card">
+        <h5 class="card-header">{{ride[5]}} To {{ride[0]}}</h5>
+        <p class="card-header">Posted at {{ride[4]}} waiting till {{ride[3]}}</p>
+        <div class="card-body">
+          <h5 class="card-title">{{ride[6]}}</h5>
+          <p class="card-text">{{ride[1]}}</p>
+          <a href="tel:{{ride[2]}}" class="btn btn-primary">Call to share</a>
+        </div>
+      </div>
+      {% endfor %} 
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Made With ❤ by <a href="https://m.facebook.com/upal.kundu.1">Upal</a>.</p>
+        </div>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      
+    
+</body>
+</html>

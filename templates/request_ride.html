@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Ride Request</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Ride Share Dhaka</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/ourteam">Follow Our Team</a>
+        <a class="nav-item nav-link active" href="/request-ride">Request a Ride</a>
+      </div>
+    </div>
+  </nav>
+    <form method="POST">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Enter your name</label>
+          <input required name="user_name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Please Enter Your Name">
+        </div>
+        <label for="exampleFormControlSelect1">Select date and time you would like to look out for</label>
+            <br>
+            <input required type="date" name="start_date_input"/>
+            <input required type="time" name="start_time_input"/><br>
+            <label for="exampleFormControlSelect1">Select date and time till you would like to look out for</label>
+            <br>
+            <input required type="date" name="end_date_input"/>
+            <input required type="time" name="end_time_input"/><br>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Starting Point</label>
+            <select required name="starting_point" class="form-control" id="exampleFormControlSelect1">
+              {% for stop in stops :%}
+              <option>{{stop}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select End Point</label>
+            <select required name="end_point" class="form-control" id="exampleFormControlSelect1">
+              {% for stop in stops :%}
+              <option>{{stop}}</option>
+              {% endfor %}
+            </select>
+          </div>  
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Enter your note</label>
+          <textarea required name="special_note" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Enter your phone number</label>
+            <input required name="phone_num" type="tel" pattern="[0-9]{10}" class="form-control" id="exampleFormControlInput1" placeholder="Please Enter Your Phone Number">
+          </div>
+        <button type="submit" class="btn btn-success">Post my request</button>
+      </form>
+    
+</body>
+</html>
